@@ -3,3 +3,4 @@ preprocessed_data.npz
 model/*.h5
 __pycache__/
 *.pyc
+.txt
