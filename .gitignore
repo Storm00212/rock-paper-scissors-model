@@ -1,0 +1,5 @@
+preprocessed_data.npz
+*.npz
+model/*.h5
+__pycache__/
+*.pyc
