@@ -1,23 +1,39 @@
 """
 Rock Paper Scissors CNN Model Training Script
 
-This script builds, trains, and evaluates a Convolutional Neural Network (CNN) for classifying
-rock-paper-scissors hand gestures from images. The model uses a sequential architecture with
-convolutional and pooling layers for feature extraction, followed by dense layers for classification.
+MACHINE LEARNING CONCEPTS COVERED:
+================================
+Convolutional Neural Networks (CNNs): Specialized for image recognition tasks
+Feature Learning: Automatic extraction of hierarchical features from raw pixels
+Backpropagation: Algorithm that computes gradients and updates model weights
+Gradient Descent: Optimization algorithm that minimizes loss function
+Overfitting Prevention: Techniques like dropout and early stopping
+Model Evaluation: Using validation and test sets to measure generalization
+Hyperparameter Tuning: Selecting optimal learning rates, batch sizes, etc.
 
-Model Architecture:
-- 3 Convolutional layers with increasing filters (32, 64, 128)
-- MaxPooling layers for downsampling
-- Flatten layer to convert 2D features to 1D
-- Dense layer with 128 neurons and ReLU activation
-- Dropout layer (50%) for regularization
-- Output layer with 3 neurons (softmax for multi-class classification)
+This script demonstrates the complete machine learning workflow:
+1. Model Architecture Design (feature engineering through layers)
+2. Loss Function Selection (categorical crossentropy for multi-class)
+3. Optimizer Choice (Adam for adaptive learning rates)
+4. Training Loop (forward pass, loss computation, backpropagation, weight updates)
+5. Regularization (dropout to prevent overfitting)
+6. Early Stopping (prevent overfitting by monitoring validation performance)
+
+CNN Architecture Explanation:
+- Convolutional layers learn spatial patterns (edges, textures, shapes)
+- Pooling layers reduce spatial dimensions and provide translation invariance
+- Dense layers learn high-level combinations of features
+- Softmax converts logits to class probabilities
+
+Why CNNs for images? Traditional neural networks would require millions of parameters
+for raw pixels. CNNs exploit spatial structure to learn efficiently with far fewer parameters.
 
 Training Features:
-- Adam optimizer with categorical cross-entropy loss
-- Early stopping to prevent overfitting (monitors validation loss)
-- Training history visualization
-- Model evaluation on test set
+- Adam optimizer: Adaptive learning rates for faster convergence
+- Categorical cross-entropy loss: Measures difference between predicted and true probability distributions
+- Early stopping: Prevents overfitting by monitoring validation loss
+- Training history visualization: Tracks learning progress and identifies issues
+- Model evaluation on test set: Unbiased performance assessment
 
 Usage:
     python model.py
@@ -27,9 +43,9 @@ Prerequisites:
     - Required libraries: tensorflow, numpy, matplotlib
 
 Output:
-    - rock_paper_scissors_model.h5: Trained model weights
-    - training_history.png: Training curves plot
-    - Console output with test accuracy
+    - rock_paper_scissors_model.h5: Trained model weights (learned parameters)
+    - training_history.png: Training curves plot (visualizes learning process)
+    - Console output with test accuracy (generalization performance)
 """
 
 import numpy as np
@@ -49,12 +65,27 @@ def build_model(input_shape=(64, 64, 3), num_classes=3):
     """
     Build the CNN model architecture.
 
+    MACHINE LEARNING CONCEPT: Neural Network Architecture Design
+    ===========================================================
+    Designing a neural network is like designing a feature extraction pipeline.
+    Each layer transforms the data to make classification easier:
+
+    Convolutional Layers: Learn spatial patterns (edges, textures, shapes of hands)
+    Pooling Layers: Reduce spatial size while retaining important features
+    Dense Layers: Learn combinations of features for final classification
+
+    Why this specific architecture?
+    - Progressive increase in filters (32→64→128): Learn simple to complex features
+    - ReLU activation: Introduces non-linearity, helps learn complex patterns
+    - MaxPooling: Provides translation invariance (gesture position doesn't matter)
+    - Dropout: Randomly deactivates neurons to prevent co-adaptation and overfitting
+
     Args:
         input_shape (tuple): Shape of input images (height, width, channels)
         num_classes (int): Number of output classes
 
     Returns:
-        Sequential: Compiled Keras model
+        Sequential: Compiled Keras model ready for training
     """
     model = Sequential([
         # First convolutional block
@@ -76,7 +107,19 @@ def build_model(input_shape=(64, 64, 3), num_classes=3):
         Dense(num_classes, activation='softmax')  # Multi-class classification
     ])
 
-    # Compile model
+    # MACHINE LEARNING CONCEPT: Loss Functions and Optimizers
+    # ======================================================
+    # Loss Function: Categorical Cross-Entropy
+    # - Measures how well predicted probabilities match true labels
+    # - For multi-class: L = -Σ(y_true * log(y_pred)) across all classes
+    # - Lower loss = better predictions, drives learning during training
+    #
+    # Optimizer: Adam (Adaptive Moment Estimation)
+    # - Combines benefits of RMSProp + Momentum
+    # - Adapts learning rates for each parameter individually
+    # - Maintains moving averages of gradients and squared gradients
+    # - Generally works well without much hyperparameter tuning
+
     model.compile(optimizer='adam',
                   loss='categorical_crossentropy',
                   metrics=['accuracy'])
@@ -148,6 +191,21 @@ def main():
     print(f"\nTraining model for up to {EPOCHS} epochs...")
     print("Early stopping enabled - training will stop if validation loss doesn't improve for 5 epochs")
 
+    # MACHINE LEARNING CONCEPT: Training Loop and Batch Processing
+    # ===========================================================
+    # Training happens in epochs (full passes through training data) and batches (subsets).
+    #
+    # Batch Size: Number of samples processed before updating weights
+    # - Larger batches: More stable gradients, faster training, higher memory usage
+    # - Smaller batches: Noisier gradients, slower training, better generalization
+    #
+    # Epochs: One complete pass through the training data
+    # - Too few: Underfitting (model hasn't learned enough)
+    # - Too many: Overfitting (model memorizes training data)
+    #
+    # Validation Data: Used to monitor generalization during training
+    # - Helps detect overfitting (training loss decreases, validation loss increases)
+
     history = model.fit(
         X_train, y_train,
         epochs=EPOCHS,
@@ -167,16 +225,46 @@ def main():
     plot_training_history(history)
 
     print("\nEvaluating model on test set...")
+
+    # MACHINE LEARNING CONCEPT: Model Evaluation and Generalization
+    # ============================================================
+    # Test set evaluation measures how well the model performs on completely unseen data.
+    # This is the true measure of generalization - how well the model works in the real world.
+    #
+    # Key metrics:
+    # - Loss: How wrong the model's predictions are (lower is better)
+    # - Accuracy: Percentage of correct predictions (higher is better)
+    #
+    # Compare training vs validation vs test performance:
+    # - Training performance: How well model memorized training data
+    # - Validation performance: How well model generalizes during training
+    # - Test performance: True generalization to new data
+
     test_loss, test_accuracy = model.evaluate(X_test, y_test, verbose=1)
     print(f"Test Loss: {test_loss:.4f}")
     print(f"Test Accuracy: {test_accuracy:.4f}")
 
-    # Additional metrics
+    # Additional metrics and analysis
     print("\nTraining Summary:")
     print(f"- Final training accuracy: {history.history['accuracy'][-1]:.4f}")
     print(f"- Final validation accuracy: {history.history['val_accuracy'][-1]:.4f}")
     print(f"- Best validation accuracy: {max(history.history['val_accuracy']):.4f}")
     print(f"- Total epochs trained: {len(history.history['loss'])}")
+
+    # MACHINE LEARNING CONCEPT: Overfitting Detection
+    # ==============================================
+    # Compare training vs validation performance to detect overfitting:
+    # - If training accuracy >> validation accuracy: Overfitting (memorizing training data)
+    # - If both accuracies are similar and high: Good generalization
+    # - If both accuracies are low: Underfitting (model too simple)
+
+    train_val_gap = history.history['accuracy'][-1] - history.history['val_accuracy'][-1]
+    if train_val_gap > 0.1:
+        print(f"- WARNING: Potential overfitting detected (train-val gap: {train_val_gap:.3f})")
+    elif test_accuracy < history.history['val_accuracy'][-1] - 0.05:
+        print(f"- WARNING: Test performance significantly worse than validation")
+    else:
+        print("- Model shows good generalization (no overfitting detected)")
 
 if __name__ == "__main__":
     main()
