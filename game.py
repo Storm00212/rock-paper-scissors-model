@@ -1,26 +1,46 @@
 """
 Rock Paper Scissors Interactive Game
 
-This script implements a complete rock-paper-scissors game where players can compete against
-the computer using real-time gesture recognition from a webcam. The game features:
+MACHINE LEARNING CONCEPTS COVERED:
+================================
+Human-AI Interaction: Designing intuitive interfaces for ML systems
+Real-time Decision Making: ML models making instant predictions for gameplay
+Confidence Thresholds: Using prediction probabilities to handle uncertainty
+User Experience Design: Balancing technical accuracy with user enjoyment
+Error Handling: Gracefully managing model failures and edge cases
+Feedback Loops: Using game results to improve future interactions
+
+This script demonstrates practical ML deployment challenges:
+1. Model Reliability: Handling low-confidence predictions gracefully
+2. User Feedback: Providing clear, immediate results users can understand
+3. Timing Constraints: Managing real-time interaction within human attention spans
+4. Error Recovery: Continuing gameplay despite occasional model failures
+5. Performance Expectations: Balancing speed vs accuracy for gaming applications
+
+The game serves as a perfect example of ML in human-facing applications where:
+- Speed matters (real-time interaction)
+- Reliability is crucial (fair gameplay)
+- User experience trumps technical perfection
+- Error handling must be graceful and non-disruptive
 
 Features:
 - Real-time gesture detection using trained CNN model
-- Interactive gameplay with countdown timer
-- Score tracking across multiple rounds
-- Visual feedback with game results
-- Computer opponent with random move selection
+- Interactive gameplay with 3-second countdown timer
+- Live score tracking across multiple rounds
+- Visual feedback with detailed game results
+- Computer opponent with random move selection (fair baseline)
+- Confidence-based gesture validation
 
-Game Rules:
-- Rock beats Scissors
-- Paper beats Rock
-- Scissors beats Paper
+Game Rules (Rock Paper Scissors):
+- ✊ Rock beats ✌️ Scissors (rock smashes scissors)
+- ✋ Paper beats ✊ Rock (paper covers rock)
+- ✌️ Scissors beats ✋ Paper (scissors cuts paper)
 - Same gestures result in a tie
 
 Controls:
 - Press 's' to start a new round
-- Press 'q' to quit the game
-- Position hand in the blue rectangle during countdown
+- Press 'q' to quit the game anytime
+- Position hand clearly in the blue rectangle during countdown
 
 Prerequisites:
 - Trained model file: rock_paper_scissors_model.h5
@@ -31,19 +51,22 @@ Usage:
     python game.py
 
 Game Flow:
-1. Player sees live video feed with ROI indicator
-2. Press 's' to start a round
-3. 3-second countdown begins
-4. Player makes gesture during countdown
-5. Computer randomly selects move
-6. Winner is determined and displayed
-7. Scores are updated
-8. Repeat or quit
+1. Player sees live video feed with ROI indicator and instructions
+2. Press 's' to begin each round (starts 3-second countdown)
+3. Countdown timer guides gesture timing (3... 2... 1...)
+4. Player forms gesture during countdown period
+5. Computer randomly selects its move (unpredictable but fair)
+6. ML model analyzes player's gesture and determines winner
+7. Results displayed with scores and visual feedback
+8. 3-second result display before returning to live feed
+9. Repeat for continuous gameplay or quit anytime
 
-Note:
-- Model confidence affects gesture reliability
-- ROI is 80% of frame dimensions, centered
-- Results displayed for 3 seconds before returning to live feed
+Technical Notes:
+- Model confidence affects gesture reliability and user feedback
+- ROI is 80% of frame dimensions, centered for optimal detection
+- Low-confidence predictions trigger "unclear" feedback
+- Results displayed for 3 seconds to match human attention span
+- Random computer moves ensure fair, unpredictable gameplay
 """
 
 import cv2
@@ -197,9 +220,18 @@ def play_round(cap, model, player_score, computer_score, round_count):
 
     player_gesture, confidence = get_prediction(roi)
 
-    # Check confidence threshold
+    # MACHINE LEARNING CONCEPT: Confidence Thresholds and Uncertainty Handling
+    # ===================================================================
+    # In real-world ML applications, models aren't always confident in their predictions.
+    # Confidence thresholds help decide when to trust model predictions vs. asking for clarification.
+    #
+    # Why this matters in gaming:
+    # - Low confidence predictions could lead to unfair game outcomes
+    # - Users need clear feedback when gestures aren't recognized properly
+    # - Better user experience by acknowledging uncertainty rather than guessing wrong
+
     if confidence < CONFIDENCE_THRESHOLD:
-        print(".2f")
+        print(f"Low confidence prediction ({confidence:.2f} < {CONFIDENCE_THRESHOLD}) - marking as unclear")
         player_gesture = "unclear"
 
     # Computer makes random move
