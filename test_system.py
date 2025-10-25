@@ -1,20 +1,35 @@
 """
 Rock Paper Scissors System Testing Script
 
-This script performs comprehensive testing of the rock-paper-scissors system including:
-1. Model accuracy testing on sample dataset images
-2. Real-time detection capability verification
-3. System integration validation
+MACHINE LEARNING CONCEPTS COVERED:
+================================
+Model Evaluation: Systematic testing of trained models on unseen data
+Cross-Validation Concepts: Ensuring model performance is robust and not overfitting
+Performance Metrics: Accuracy, confidence scores, and error analysis
+System Integration Testing: Validating end-to-end ML pipelines
+Debugging ML Systems: Identifying failure points and performance bottlenecks
+Statistical Significance: Understanding when results are meaningful vs. random
 
-The script tests the complete pipeline from image preprocessing to gesture classification,
-ensuring all components work together correctly.
+This script demonstrates professional ML testing practices:
+1. Unit Testing: Individual component validation (model loading, preprocessing)
+2. Integration Testing: End-to-end pipeline verification
+3. Performance Benchmarking: Establishing baseline metrics for comparison
+4. Error Analysis: Understanding failure modes and edge cases
+5. Automated Testing: Creating reproducible evaluation procedures
+
+Key testing principles covered:
+- Test on unseen data (different from training/validation sets)
+- Use multiple metrics (accuracy, confidence, error rates)
+- Handle edge cases gracefully (missing files, camera issues)
+- Provide actionable diagnostic information
+- Establish performance baselines for future improvements
 
 Testing Features:
 - Batch testing on dataset samples (5 images per class)
 - Accuracy calculation and reporting
 - Real-time camera access verification
 - Error handling and diagnostic messages
-- Confidence score analysis
+- Confidence score analysis and threshold evaluation
 
 Prerequisites:
 - Trained model file: rock_paper_scissors_model.h5
@@ -147,7 +162,14 @@ def test_model_on_dataset():
                 if confidence < CONFIDENCE_THRESHOLD:
                     low_confidence_predictions += 1
 
-                # Display result
+                # MACHINE LEARNING CONCEPT: Error Analysis and Confidence Interpretation
+                # ==================================================================
+                # Analyzing individual predictions helps understand model behavior:
+                # - Correct high-confidence predictions: Model is learning well
+                # - Correct low-confidence predictions: Model is right but uncertain (needs more training)
+                # - Incorrect high-confidence predictions: Model is confidently wrong (needs better features/training)
+                # - Incorrect low-confidence predictions: Model knows it's uncertain (reasonable behavior)
+            
                 status = "✓" if is_correct else "✗"
                 confidence_indicator = "⚠️" if confidence < CONFIDENCE_THRESHOLD else "✓"
                 print(f"  {status} {img_name[:20]:<20} | Actual: {actual_class:<8} | Predicted: {predicted_class:<8} ({confidence:.2f}) {confidence_indicator}")
