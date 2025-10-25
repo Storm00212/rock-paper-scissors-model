@@ -129,6 +129,9 @@ git lfs pull
 # Install dependencies
 pip install tensorflow opencv-python numpy matplotlib scikit-learn
 
+# Optional: For enhanced hand tracking features
+pip install mediapipe  # Recommended for MediaPipe hand tracking
+
 # Run the complete pipeline
 python preprocess.py
 python model.py
@@ -177,6 +180,9 @@ python game.py  # Play the game!
 2. **Install dependencies**
    ```bash
    pip install tensorflow opencv-python numpy matplotlib scikit-learn
+
+   # Optional: For enhanced hand tracking features
+   pip install mediapipe  # Recommended for MediaPipe hand tracking
    ```
 
 3. **Generate preprocessed data**
@@ -230,6 +236,8 @@ rock-paper-scissors/
 ├── model.py                   # CNN model training and evaluation
 ├── real_time_cv.py            # Real-time gesture detection demo
 ├── game.py                    # Interactive rock-paper-scissors game
+├── enhanced_game.py           # Advanced game with hand landmark tracking
+├── hand_tracking.py           # Hand landmark detection and visualization
 ├── test_system.py             # System testing and validation
 │
 ├── preprocessed_data.npz      # Processed training data (generated, ~205MB)
@@ -249,6 +257,11 @@ The following files are generated when you run the scripts and are tracked with 
 - `training_history.png` - Training accuracy/loss curves
 
 These files are too large for standard Git but are handled by Git LFS for proper version control.
+
+### 🆕 Enhanced Features Files
+
+- `enhanced_game.py` - Advanced game with real-time hand landmark tracking
+- `hand_tracking.py` - Hand detection, landmark extraction, and visualization module
 
 ## 🔧 Technical Details
 
@@ -283,6 +296,55 @@ The system uses a Convolutional Neural Network (CNN) with the following architec
 - **Training Time**: ~5-10 minutes (depending on hardware)
 - **Real-time FPS**: Smooth performance on most modern systems
 
+## 🎨 Enhanced Version with Hand Tracking
+
+### Advanced Features
+
+The project now includes an **enhanced version** with advanced hand landmark tracking:
+
+- **Real-time hand landmark detection** using computer vision
+- **Colored landmark connections** for each finger (thumb=blue, index=green, etc.)
+- **Smooth interpolation** for fluid movement tracking
+- **Gesture confidence overlays** on the hand itself
+- **Enhanced error handling** for low-light conditions
+- **Multi-modal integration** combining CNN classification with landmark tracking
+
+### Enhanced Installation
+
+For the advanced hand tracking features:
+
+```bash
+# Install additional dependencies (optional, fallback implementation included)
+pip install mediapipe  # For MediaPipe hand tracking (recommended)
+# OR use the built-in OpenCV-based fallback implementation
+```
+
+### Try the Enhanced Game
+
+```bash
+# Run the enhanced version with hand tracking
+python enhanced_game.py
+```
+
+**New Features in Enhanced Mode:**
+- 🎯 **Visual landmark feedback**: See colored lines connecting hand joints
+- 👁️ **Hand visibility detection**: System knows if your hand is fully visible
+- 🎮 **Live gesture preview**: See your gesture prediction in real-time
+- 🔍 **Confidence visualization**: Gesture confidence shown directly on hand
+- ⚡ **Smooth tracking**: Fluid hand movement visualization
+
+### Demo Videos
+
+**Enhanced Hand Tracking Demo:**
+- Colored landmark connections for each finger
+- Real-time gesture confidence overlays
+- Smooth hand movement interpolation
+- Low-light condition handling
+
+**Before/After Comparison:**
+- Standard version: Basic gesture detection
+- Enhanced version: Full hand landmark visualization + improved accuracy
+
 ## 🎮 Usage Examples
 
 ### Play the Game
@@ -290,6 +352,12 @@ The system uses a Convolutional Neural Network (CNN) with the following architec
 python game.py
 ```
 Interactive game with scoring and visual feedback.
+
+### Enhanced Game with Hand Tracking
+```bash
+python enhanced_game.py
+```
+Advanced game with real-time hand landmark visualization and improved accuracy.
 
 ### Test Gesture Detection
 ```bash
