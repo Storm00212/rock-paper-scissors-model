@@ -109,6 +109,46 @@ By the end of this project, you will understand:
 - ✅ Balancing technical performance with user experience
 - ✅ Debugging and improving machine learning systems
 
+## 🚀 Quick Start for Contributors
+
+### Prerequisites for Development
+- Python 3.7+
+- Webcam/camera for testing
+- Git and Git LFS for large file handling
+
+### Development Setup
+```bash
+# Clone the repository
+git clone https://github.com/Storm00212/rock-paper-scissors-model.git
+cd rock-paper-scissors
+
+# Install Git LFS and pull large files
+git lfs install
+git lfs pull
+
+# Install dependencies
+pip install tensorflow opencv-python numpy matplotlib scikit-learn
+
+# Run the complete pipeline
+python preprocess.py
+python model.py
+python test_system.py
+python game.py  # Play the game!
+```
+
+### Repository Structure Notes
+- **Large files** (models, datasets) are tracked with Git LFS
+- **Generated files** are not committed (use `.gitignore`)
+- **Source code** includes comprehensive ML teaching comments
+- **Documentation** serves as both guide and curriculum
+
+### Contributing
+1. Study the learning pathway in this README
+2. Experiment with the code and understand each component
+3. Propose improvements or extensions
+4. Test thoroughly before submitting changes
+5. Update documentation as needed
+
 ## 🎮 Features
 
 - **Real-time Gesture Recognition**: Uses a trained CNN model to detect rock, paper, and scissors gestures
@@ -181,7 +221,7 @@ By the end of this project, you will understand:
 ```
 rock-paper-scissors/
 │
-├── dataset/                    # Training images
+├── dataset/                    # Training images (712 rock, 726 paper, 750 scissors)
 │   ├── rock/                  # Rock gesture images
 │   ├── paper/                 # Paper gesture images
 │   └── scissors/              # Scissors gesture images
@@ -192,12 +232,23 @@ rock-paper-scissors/
 ├── game.py                    # Interactive rock-paper-scissors game
 ├── test_system.py             # System testing and validation
 │
-├── preprocessed_data.npz      # Processed training data (generated)
-├── rock_paper_scissors_model.h5  # Trained model (generated)
+├── preprocessed_data.npz      # Processed training data (generated, ~205MB)
+├── rock_paper_scissors_model.h5  # Trained model (generated, ~12MB)
 ├── training_history.png       # Training curves (generated)
 │
+├── .gitattributes             # Git LFS configuration for large files
+├── .gitignore                 # Git ignore rules
 └── README.md                  # This file
 ```
+
+### 📦 Generated Files (Not in Repository)
+
+The following files are generated when you run the scripts and are tracked with Git LFS:
+- `preprocessed_data.npz` (~205MB) - Contains train/val/test splits
+- `rock_paper_scissors_model.h5` (~12MB) - Trained CNN model weights
+- `training_history.png` - Training accuracy/loss curves
+
+These files are too large for standard Git but are handled by Git LFS for proper version control.
 
 ## 🔧 Technical Details
 
