@@ -1,16 +1,36 @@
 """
 Real-Time Rock Paper Scissors Gesture Detection
 
-This script performs real-time gesture recognition using a webcam and the trained CNN model.
-It captures video frames, extracts a region of interest (ROI), and classifies hand gestures
-in real-time with live feedback displayed on the video feed.
+MACHINE LEARNING CONCEPTS COVERED:
+================================
+Computer Vision Pipeline: Converting video streams to ML predictions
+Real-time Inference: Applying trained models to live data streams
+Region of Interest (ROI): Focusing model on relevant parts of input
+Model Deployment: Using trained models in production applications
+Latency vs Accuracy Trade-offs: Balancing speed and performance
+Edge Case Handling: Dealing with poor lighting, motion blur, etc.
+
+This script demonstrates the complete computer vision application pipeline:
+1. Video Capture: Real-time frame acquisition from webcam
+2. Preprocessing: Converting video frames to model-compatible format
+3. Inference: Running the trained CNN on live data
+4. Post-processing: Interpreting model outputs for user feedback
+5. Visualization: Displaying results with meaningful UI elements
+
+Key challenges in real-time ML applications:
+- Maintaining consistent frame rates (30+ FPS)
+- Handling variable lighting conditions
+- Managing camera positioning and stability
+- Providing user feedback for poor predictions
+- Balancing model complexity with inference speed
 
 Features:
-- Real-time video capture from webcam
-- Region of interest (ROI) selection for gesture detection
-- Live gesture classification with confidence scores
+- Real-time video capture from webcam (30+ FPS)
+- Region of interest (ROI) selection for focused gesture detection
+- Live gesture classification with real-time confidence scores
 - Visual feedback with bounding box and text overlay
 - Mirror effect for natural user experience
+- Low-latency inference using optimized CNN
 
 Controls:
 - Press 'q' to quit the application
@@ -23,10 +43,11 @@ Prerequisites:
 Usage:
     python real_time_cv.py
 
-Note:
-- The ROI is set to 80% of frame dimensions, centered
-- Model expects 64x64 RGB images
-- Confidence threshold can be adjusted if needed
+Technical Notes:
+- ROI is set to 80% of frame dimensions, centered for optimal hand detection
+- Model expects 64x64 RGB images (matches training input size)
+- Confidence threshold can be adjusted for different sensitivity levels
+- Uses OpenCV for efficient video processing and display
 """
 
 import cv2
