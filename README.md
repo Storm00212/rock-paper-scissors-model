@@ -2,6 +2,113 @@
 
 An AI-powered rock-paper-scissors game that uses computer vision and machine learning to detect hand gestures in real-time through your webcam. Challenge the computer to a game of rock-paper-scissors using gesture recognition!
 
+## 🎓 Machine Learning Learning Pathway
+
+This project serves as a comprehensive introduction to machine learning concepts through hands-on computer vision. Follow the structured learning path below to understand the complete ML pipeline:
+
+### 📚 Study Guide - Learn ML Through This Project
+
+#### Phase 1: Data Preparation & Preprocessing
+**File to Study**: `preprocess.py`
+**Concepts Covered**:
+- **Data Preprocessing**: Converting raw images into ML-ready format
+- **Feature Engineering**: Transforming images into numerical representations
+- **Data Splitting**: Train/Validation/Test sets and why stratification matters
+- **One-Hot Encoding**: Converting categorical labels to numerical format
+- **Data Normalization**: Scaling pixel values for better training convergence
+
+**Key Questions to Explore**:
+- Why do we resize images to 64x64 pixels?
+- What happens if we don't normalize pixel values to [0,1]?
+- Why split data into train/val/test sets instead of using all data for training?
+
+#### Phase 2: Model Architecture & Training
+**File to Study**: `model.py`
+**Concepts Covered**:
+- **Convolutional Neural Networks (CNNs)**: Why CNNs work better than regular neural networks for images
+- **Feature Learning**: How CNNs automatically learn hierarchical features (edges → textures → shapes)
+- **Backpropagation**: The algorithm that trains neural networks
+- **Gradient Descent**: Mathematical optimization for finding best model parameters
+- **Loss Functions**: Categorical cross-entropy for multi-class classification
+- **Optimizers**: Adam optimizer and adaptive learning rates
+- **Overfitting Prevention**: Dropout, early stopping, and validation monitoring
+
+**Key Questions to Explore**:
+- Why do CNNs have convolutional layers followed by pooling layers?
+- What does "training loss" vs "validation loss" tell us about model performance?
+- How does early stopping prevent overfitting?
+
+#### Phase 3: Model Evaluation & Testing
+**File to Study**: `test_system.py`
+**Concepts Covered**:
+- **Model Evaluation**: Testing on unseen data to measure generalization
+- **Performance Metrics**: Accuracy, confidence scores, error analysis
+- **Cross-Validation Concepts**: Ensuring robust performance evaluation
+- **Confidence Interpretation**: Understanding prediction certainty
+- **System Integration Testing**: Validating end-to-end ML pipelines
+
+**Key Questions to Explore**:
+- Why test on a separate dataset instead of training data?
+- What do confidence scores tell us about model reliability?
+- How do we know if our model is actually learning vs just memorizing?
+
+#### Phase 4: Real-Time Deployment & Computer Vision
+**File to Study**: `real_time_cv.py`
+**Concepts Covered**:
+- **Computer Vision Pipelines**: From video frames to ML predictions
+- **Real-Time Inference**: Applying trained models to live data streams
+- **Region of Interest (ROI)**: Focusing models on relevant image regions
+- **Model Deployment**: Using trained models in production applications
+- **Latency vs Accuracy Trade-offs**: Balancing speed and performance
+- **Edge Case Handling**: Managing poor lighting, motion blur, camera issues
+
+**Key Questions to Explore**:
+- Why do real-time applications need to balance speed vs accuracy?
+- How does ROI selection improve model performance?
+- What challenges arise when deploying ML models to real-world applications?
+
+#### Phase 5: Human-AI Interaction & UX Design
+**File to Study**: `game.py`
+**Concepts Covered**:
+- **Human-AI Interaction**: Designing intuitive interfaces for ML systems
+- **Confidence Thresholds**: Using prediction probabilities to handle uncertainty
+- **User Experience Design**: Balancing technical accuracy with user enjoyment
+- **Error Handling**: Gracefully managing model failures and edge cases
+- **Feedback Loops**: Using user interactions to improve system performance
+
+**Key Questions to Explore**:
+- How should ML systems handle uncertainty in user-facing applications?
+- Why is user experience more important than technical perfection in games?
+- How do we design systems that users trust despite occasional errors?
+
+### 🛣️ Recommended Learning Order
+
+1. **Start Here**: Read the README overview and run the complete system
+2. **Phase 1**: Study `preprocess.py` - understand data preparation
+3. **Phase 2**: Study `model.py` - learn about CNNs and training
+4. **Phase 3**: Study `test_system.py` - understand evaluation and testing
+5. **Phase 4**: Study `real_time_cv.py` - explore computer vision deployment
+6. **Phase 5**: Study `game.py` - learn about human-AI interaction
+
+### 📖 Additional Resources
+
+After completing this project, explore these topics:
+- **Advanced CNN Architectures**: ResNet, DenseNet, EfficientNet
+- **Data Augmentation**: Artificially increasing dataset size
+- **Transfer Learning**: Using pre-trained models for better performance
+- **Model Interpretability**: Understanding what neural networks learn
+- **Production Deployment**: Serving ML models at scale
+
+### 🎯 Learning Objectives
+
+By the end of this project, you will understand:
+- ✅ Complete machine learning pipeline from data to deployment
+- ✅ How convolutional neural networks work for image classification
+- ✅ Best practices for training, evaluating, and deploying ML models
+- ✅ Real-world challenges in computer vision applications
+- ✅ Balancing technical performance with user experience
+- ✅ Debugging and improving machine learning systems
+
 ## 🎮 Features
 
 - **Real-time Gesture Recognition**: Uses a trained CNN model to detect rock, paper, and scissors gestures
