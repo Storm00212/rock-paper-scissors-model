@@ -130,6 +130,7 @@ By the end of this project, you will understand:
 
 1. **Clone or download the project**
    ```bash
+   git clone https://github.com/Storm00212/rock-paper-scissors-model.git
    cd rock-paper-scissors
    ```
 
@@ -138,10 +139,11 @@ By the end of this project, you will understand:
    pip install tensorflow opencv-python numpy matplotlib scikit-learn
    ```
 
-3. **Run the preprocessing script** (if not already done)
+3. **Generate preprocessed data**
    ```bash
    python preprocess.py
    ```
+   This will create `preprocessed_data.npz` locally (~205MB)
 
 4. **Train the model** (if not already done)
    ```bash
