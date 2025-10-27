@@ -1,4 +1,4 @@
-# Rock Paper Scissors with Computer Vision 🤖✂️📄
+# Rock Paper Scissors with Computer Vision
 
 An AI-powered rock-paper-scissors game that uses computer vision and machine learning to detect hand gestures in real-time through your webcam. Challenge the computer to a game of rock-paper-scissors using gesture recognition!
 
@@ -102,12 +102,12 @@ After completing this project, explore these topics:
 ###  Learning Objectives
 
 By the end of this project, you will understand:
-- ✅ Complete machine learning pipeline from data to deployment
-- ✅ How convolutional neural networks work for image classification
-- ✅ Best practices for training, evaluating, and deploying ML models
-- ✅ Real-world challenges in computer vision applications
-- ✅ Balancing technical performance with user experience
-- ✅ Debugging and improving machine learning systems
+-  Complete machine learning pipeline from data to deployment
+-  How convolutional neural networks work for image classification
+-  Best practices for training, evaluating, and deploying ML models
+-  Real-world challenges in computer vision applications
+-  Balancing technical performance with user experience
+-  Debugging and improving machine learning systems
 
 ##  Quick Start for Contributors
 
