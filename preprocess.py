@@ -75,27 +75,29 @@ def load_data():
     print("Loading and preprocessing images...")
 
     for label, class_name in enumerate(CLASSES):
+        #Enumerates the classess into rock, paper and scissors.
         class_dir = os.path.join(DATASET_DIR, class_name)
         print(f"Processing class '{class_name}' from {class_dir}")
-
+        #error handling for directory error.
         if not os.path.exists(class_dir):
             print(f"Warning: Directory {class_dir} does not exist. Skipping.")
             continue
 
         image_count = 0
         for img_name in os.listdir(class_dir):
+            #loeads the image in each class.
             img_path = os.path.join(class_dir, img_name)
 
             # Read image
             img = cv2.imread(img_path)
 
             if img is not None:
-                # Resize to target dimensions
+                # Resize to target dimensions 64pixels
                 img = cv2.resize(img, (IMG_SIZE, IMG_SIZE))
 
                 # Normalize pixel values to [0, 1]
                 img = img / 255.0
-
+              #creates arrays for the tables.
                 data.append(img)
                 labels.append(label)
                 image_count += 1
@@ -113,6 +115,7 @@ def load_data():
     # Convert categorical labels (0, 1, 2) to binary vectors ([1,0,0], [0,1,0], [0,0,1])
     # This is required for multi-class classification with softmax activation
     # Without one-hot encoding, the model would learn ordinal relationships between classes
+    # Now you know why you learned matrices in class boii.
     labels = to_categorical(labels, num_classes=len(CLASSES))
 
     print(f"Total images loaded: {len(data)}")
