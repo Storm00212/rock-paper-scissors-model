@@ -152,7 +152,7 @@ python game.py  # Play the game!
 4. Test thoroughly before submitting changes
 5. Update documentation as needed
 
-## 🎮 Features
+##  Features
 
 - **Real-time Gesture Recognition**: Uses a trained CNN model to detect rock, paper, and scissors gestures
 - **Interactive Gameplay**: Play against the computer with live scoring and round-by-round results
@@ -161,7 +161,7 @@ python game.py  # Play the game!
 - **Live Demo Mode**: Test gesture detection without playing the game
 - **Comprehensive Testing**: Built-in system testing and validation
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 
@@ -420,7 +420,7 @@ except ImportError:
 
 If all checks pass, you're ready to play!
 
-## 🎯 How to Play
+##  How to Play
 
 1. **Launch the game**: Run `python game.py`
 2. **Position yourself**: Make sure your webcam can see you clearly
@@ -435,8 +435,9 @@ If all checks pass, you're ready to play!
 - ✋ **Paper** beats ✊ **Rock**
 - ✌️ **Scissors** beats ✋ **Paper**
 - Same gestures = Tie
+- I think you know the damn game though.
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 rock-paper-scissors/
@@ -463,7 +464,7 @@ rock-paper-scissors/
 └── README.md                  # This file
 ```
 
-### 📦 Generated Files (Not in Repository)
+###  Generated Files (Not in Repository)
 
 The following files are generated when you run the scripts and are tracked with Git LFS:
 - `preprocessed_data.npz` (~205MB) - Contains train/val/test splits
@@ -472,12 +473,12 @@ The following files are generated when you run the scripts and are tracked with 
 
 These files are too large for standard Git but are handled by Git LFS for proper version control.
 
-### 🆕 Enhanced Features Files
+###  Enhanced Features Files
 
 - `enhanced_game.py` - Advanced game with real-time hand landmark tracking
 - `hand_tracking.py` - Hand detection, landmark extraction, and visualization module
 
-## 🔧 Technical Details
+##  Technical Details
 
 ### Model Architecture
 
@@ -510,7 +511,7 @@ The system uses a Convolutional Neural Network (CNN) with the following architec
 - **Training Time**: ~5-10 minutes (depending on hardware)
 - **Real-time FPS**: Smooth performance on most modern systems
 
-## 🎨 Enhanced Version with Hand Tracking
+##  Enhanced Version with Hand Tracking
 
 ### Advanced Features
 
@@ -541,11 +542,11 @@ python enhanced_game.py
 ```
 
 **New Features in Enhanced Mode:**
-- 🎯 **Visual landmark feedback**: See colored lines connecting hand joints
-- 👁️ **Hand visibility detection**: System knows if your hand is fully visible
-- 🎮 **Live gesture preview**: See your gesture prediction in real-time
-- 🔍 **Confidence visualization**: Gesture confidence shown directly on hand
-- ⚡ **Smooth tracking**: Fluid hand movement visualization
+-  **Visual landmark feedback**: See colored lines connecting hand joints
+-  **Hand visibility detection**: System knows if your hand is fully visible
+-  **Live gesture preview**: See your gesture prediction in real-time
+-  **Confidence visualization**: Gesture confidence shown directly on hand
+-  **Smooth tracking**: Fluid hand movement visualization
 
 ### Demo Videos
 
@@ -559,7 +560,7 @@ python enhanced_game.py
 - Standard version: Basic gesture detection
 - Enhanced version: Full hand landmark visualization + improved accuracy
 
-## 🎮 Usage Examples
+##  Usage Examples
 
 ### Play the Game
 ```bash
@@ -591,7 +592,7 @@ python model.py
 ```
 Train the CNN model from scratch (requires preprocessed data).
 
-## 🛠️ Customization
+##  Customization
 
 ### Adjust Gesture Detection
 - Modify `CONFIDENCE_THRESHOLD` in scripts for sensitivity
@@ -608,7 +609,7 @@ Train the CNN model from scratch (requires preprocessed data).
 - Implement difficulty levels
 - Add multiplayer support
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 ### Installation Issues
 
@@ -720,7 +721,7 @@ If you still have issues:
 - **Storage**: 2GB free space
 - **Camera**: Any webcam or built-in camera
 
-## 📊 Model Training Results
+##  Model Training Results
 
 The training process generates:
 - **Model file**: `rock_paper_scissors_model.h5`
@@ -732,8 +733,8 @@ Typical training results:
 - Final validation accuracy: ~97%
 - Test accuracy: ~97%
 
-## 🤝 Contributing
-
+##  Contributing
+I am still working on it's accuracy in computer vision.
 Feel free to contribute improvements:
 1. Fork the repository
 2. Create a feature branch
@@ -741,11 +742,11 @@ Feel free to contribute improvements:
 4. Test thoroughly
 5. Submit a pull request
 
-## 📄 License
+##  License
 
 This project is open source and available under the MIT License.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - Dataset source: Rock-Paper-Scissors image dataset
 - Built with TensorFlow, OpenCV, and other open-source libraries
@@ -753,6 +754,6 @@ This project is open source and available under the MIT License.
 
 ---
 
-**Enjoy playing rock-paper-scissors with AI!** 🎉
+**Enjoy playing rock-paper-scissors with AI!** 
 
-For questions or issues, please check the troubleshooting section or create an issue in the repository.
+For questions or issues, please check the troubleshooting section or create an issue in the repository. Or just email me and we can figure it out.
