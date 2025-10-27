@@ -1,0 +1,7 @@
+| Type of Data                                    | Input Shape Example | Meaning                                  |
+| ----------------------------------------------- | ------------------- | ---------------------------------------- |
+| 🧮 *Tabular data* (e.g., age, height, salary) | (10,)             | 10 numerical features per sample         |
+| 🖼 *Image data*                              | (64, 64, 3)       | 64×64 pixels with 3 color channels (RGB) |
+| 🗣 *Audio data*                              | (16000,)          | 1D array of 16,000 audio samples         |
+| ✍ *Text data*                                | (100,)            | Sequence of 100 tokens/words             |
+| 📽 *Video data*                              | (30, 64, 64, 3)   | 30 frames of 64×64 RGB images            |
