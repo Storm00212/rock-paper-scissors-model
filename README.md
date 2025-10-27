@@ -2,11 +2,11 @@
 
 An AI-powered rock-paper-scissors game that uses computer vision and machine learning to detect hand gestures in real-time through your webcam. Challenge the computer to a game of rock-paper-scissors using gesture recognition!
 
-## 🎓 Machine Learning Learning Pathway
+##  Machine Learning Learning Pathway
 
 This project serves as a comprehensive introduction to machine learning concepts through hands-on computer vision. Follow the structured learning path below to understand the complete ML pipeline:
 
-### 📚 Study Guide - Learn ML Through This Project
+###  Study Guide - Learn ML Through This Project
 
 #### Phase 1: Data Preparation & Preprocessing
 **File to Study**: `preprocess.py`
@@ -81,7 +81,7 @@ This project serves as a comprehensive introduction to machine learning concepts
 - Why is user experience more important than technical perfection in games?
 - How do we design systems that users trust despite occasional errors?
 
-### 🛣️ Recommended Learning Order
+###  Recommended Learning Order
 
 1. **Start Here**: Read the README overview and run the complete system
 2. **Phase 1**: Study `preprocess.py` - understand data preparation
@@ -90,7 +90,7 @@ This project serves as a comprehensive introduction to machine learning concepts
 5. **Phase 4**: Study `real_time_cv.py` - explore computer vision deployment
 6. **Phase 5**: Study `game.py` - learn about human-AI interaction
 
-### 📖 Additional Resources
+###  Additional Resources
 
 After completing this project, explore these topics:
 - **Advanced CNN Architectures**: ResNet, DenseNet, EfficientNet
@@ -99,7 +99,7 @@ After completing this project, explore these topics:
 - **Model Interpretability**: Understanding what neural networks learn
 - **Production Deployment**: Serving ML models at scale
 
-### 🎯 Learning Objectives
+###  Learning Objectives
 
 By the end of this project, you will understand:
 - ✅ Complete machine learning pipeline from data to deployment
@@ -109,7 +109,7 @@ By the end of this project, you will understand:
 - ✅ Balancing technical performance with user experience
 - ✅ Debugging and improving machine learning systems
 
-## 🚀 Quick Start for Contributors
+##  Quick Start for Contributors
 
 ### Prerequisites for Development
 - Python 3.7+
@@ -165,46 +165,260 @@ python game.py  # Play the game!
 
 ### Prerequisites
 
-- Python 3.7+
-- Webcam/camera
-- Required libraries (automatically installed via requirements.txt)
+Before you begin, ensure you have the following installed on your system:
+
+#### 1. Python 3.7 or Higher
+
+**For Windows:**
+1. Visit https://www.python.org/downloads/
+2. Download the latest Python 3.7+ installer for Windows
+3. Run the installer
+4. **Important**: Check the box "Add Python to PATH" during installation
+5. Click "Install Now"
+6. Verify installation: Open Command Prompt and type `python --version`
+
+**For macOS:**
+1. Visit https://www.python.org/downloads/
+2. Download the macOS installer
+3. Run the installer package
+4. Follow the installation wizard
+5. Verify installation: Open Terminal and type `python3 --version`
+
+**For Linux (Ubuntu/Debian):**
+```bash
+# Update package list
+sudo apt update
+
+# Install Python 3 and pip
+sudo apt install python3 python3-pip python3-venv
+
+# Verify installation
+python3 --version
+pip3 --version
+```
+
+**For Linux (CentOS/RHEL/Fedora):**
+```bash
+# Install Python 3
+sudo yum install python3 python3-pip  # CentOS/RHEL
+# or
+sudo dnf install python3 python3-pip  # Fedora
+
+# Verify installation
+python3 --version
+```
+
+#### 2. Git Version Control
+
+**For Windows:**
+1. Visit https://git-scm.com/download/win
+2. Download the installer
+3. Run the installer with default settings
+4. Verify: Open Command Prompt and type `git --version`
+
+**For macOS:**
+```bash
+# Install via Homebrew (recommended)
+brew install git
+
+# Or download from https://git-scm.com/download/mac
+```
+
+**For Linux:**
+```bash
+# Ubuntu/Debian
+sudo apt install git
+
+# CentOS/RHEL
+sudo yum install git
+
+# Fedora
+sudo dnf install git
+
+# Verify installation
+git --version
+```
+
+#### 3. Git LFS (Large File Storage)
+
+Git LFS is required to download the trained model files.
+
+**For Windows:**
+1. Visit https://git-lfs.github.io/
+2. Download the Windows installer
+3. Run the installer
+4. Verify: Open Command Prompt and type `git lfs version`
+
+**For macOS:**
+```bash
+# Install via Homebrew
+brew install git-lfs
+
+# Or download from https://git-lfs.github.io/
+```
+
+**For Linux:**
+```bash
+# Ubuntu/Debian
+sudo apt install git-lfs
+
+# CentOS/RHEL/Fedora
+# Download from https://git-lfs.github.io/
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+sudo apt install git-lfs
+```
+
+#### 4. Webcam/Camera
+
+- Any built-in webcam or external USB camera
+- Ensure camera permissions are granted (especially on macOS/Linux)
+- Test your camera works with other applications before proceeding
+
+#### 5. System Requirements
+
+- **Operating System**: Windows 10+, macOS 10.14+, Ubuntu 18.04+ or equivalent Linux
+- **RAM**: Minimum 4GB, recommended 8GB
+- **Storage**: 2GB free space for installation + generated files
+- **Internet**: Required for downloading dependencies and cloning repository
 
 ### Installation
 
-1. **Clone or download the project**
-   ```bash
-   git clone https://github.com/Storm00212/rock-paper-scissors-model.git
-   cd rock-paper-scissors
-   ```
+#### Step 1: Set Up a Virtual Environment (Recommended)
 
-2. **Install dependencies**
-   ```bash
-   pip install tensorflow opencv-python numpy matplotlib scikit-learn
+A virtual environment keeps your project dependencies isolated from your system Python installation.
 
-   # Optional: For enhanced hand tracking features
-   pip install mediapipe  # Recommended for MediaPipe hand tracking
-   ```
+**For Windows:**
+```bash
+# Create virtual environment
+python -m venv rps_env
 
-3. **Generate preprocessed data**
-   ```bash
-   python preprocess.py
-   ```
-   This will create `preprocessed_data.npz` locally (~205MB)
+# Activate virtual environment
+rps_env\Scripts\activate
 
-4. **Train the model** (if not already done)
-   ```bash
-   python model.py
-   ```
+# You should see (rps_env) in your command prompt
+```
 
-5. **Test the system**
-   ```bash
-   python test_system.py
-   ```
+**For macOS/Linux:**
+```bash
+# Create virtual environment
+python3 -m venv rps_env
 
-6. **Play the game!**
-   ```bash
-   python game.py
-   ```
+# Activate virtual environment
+source rps_env/bin/activate
+
+# You should see (rps_env) in your terminal
+```
+
+**To deactivate later:** Type `deactivate` and press Enter.
+
+#### Step 2: Clone the Repository
+
+```bash
+# Clone the project
+git clone https://github.com/Storm00212/rock-paper-scissors-model.git
+
+# Enter the project directory
+cd rock-paper-scissors
+
+# If you created a virtual environment, make sure it's activated first
+```
+
+#### Step 3: Install Git LFS and Download Large Files
+
+```bash
+# Initialize Git LFS (if not already done globally)
+git lfs install
+
+# Pull large files (model and dataset files)
+git lfs pull
+```
+
+#### Step 4: Install Python Dependencies
+
+```bash
+# Install core dependencies
+pip install tensorflow opencv-python numpy matplotlib scikit-learn
+
+# Optional: For enhanced hand tracking features
+pip install mediapipe  # Recommended for MediaPipe hand tracking
+
+# Verify installations
+python -c "import tensorflow as tf; print('TensorFlow version:', tf.__version__)"
+python -c "import cv2; print('OpenCV version:', cv2.__version__)"
+```
+
+#### Step 5: Generate Preprocessed Data
+
+```bash
+# Generate training data (this creates preprocessed_data.npz ~205MB)
+python preprocess.py
+```
+
+This step processes the raw images into a format ready for training. It may take a few minutes.
+
+#### Step 6: Train the Model (Optional - Pre-trained model included)
+
+If you want to train your own model:
+
+```bash
+# Train the CNN model (takes 5-10 minutes)
+python model.py
+```
+
+**Note**: A pre-trained model is already included via Git LFS, so this step is optional.
+
+#### Step 7: Test the System
+
+```bash
+# Run comprehensive tests to verify everything works
+python test_system.py
+```
+
+This will test model accuracy and real-time performance.
+
+#### Step 8: Play the Game!
+
+```bash
+# Start the interactive rock-paper-scissors game
+python game.py
+```
+
+**For enhanced version with hand tracking:**
+```bash
+# Run the advanced version (requires MediaPipe)
+python enhanced_game.py
+```
+
+### Post-Installation Verification
+
+After completing setup, verify everything works:
+
+```bash
+# Quick verification script
+python -c "
+import sys
+print('Python version:', sys.version)
+try:
+    import tensorflow as tf
+    print('✓ TensorFlow available')
+except ImportError:
+    print('✗ TensorFlow missing')
+
+try:
+    import cv2
+    print('✓ OpenCV available')
+except ImportError:
+    print('✗ OpenCV missing')
+
+try:
+    import numpy as np
+    print('✓ NumPy available')
+except ImportError:
+    print('✗ NumPy missing')
+"
+```
+
+If all checks pass, you're ready to play!
 
 ## 🎯 How to Play
 
@@ -396,25 +610,107 @@ Train the CNN model from scratch (requires preprocessed data).
 
 ## 🐛 Troubleshooting
 
-### Common Issues
+### Installation Issues
+
+**"python is not recognized as an internal or external command" (Windows)**
+- Reinstall Python and make sure to check "Add Python to PATH"
+- Or use `py` instead of `python` in commands
+- Try: `py -m venv rps_env` and `rps_env\Scripts\activate`
+
+**"pip is not recognized"**
+- pip is usually installed with Python
+- Try: `python -m pip install <package>` instead of `pip install <package>`
+- Or reinstall Python with pip included
+
+**"git lfs command not found"**
+- Make sure Git LFS is properly installed
+- Try reinstalling Git LFS from https://git-lfs.github.io/
+- On some systems, you may need to restart your terminal/command prompt
+
+**Virtual environment activation fails**
+- Make sure you're using the correct activation command for your OS
+- On Windows: `rps_env\Scripts\activate` (not `rps_env/bin/activate`)
+- On macOS/Linux: `source rps_env/bin/activate`
+- If still failing, try: `python -m venv rps_env --clear` to recreate it
+
+**Permission denied errors during installation**
+- On macOS/Linux: Try `sudo pip install` (not recommended) or use `--user` flag
+- Better: Use virtual environment which doesn't require admin rights
+- On Windows: Run Command Prompt as Administrator
+
+### Runtime Issues
 
 **"Model file not found"**
 - Run `python model.py` to train the model first
+- Check if `git lfs pull` was successful - the model file should be ~12MB
+- Verify you're in the correct directory (`rock-paper-scissors`)
 
 **"Camera not accessible"**
-- Check camera permissions
-- Ensure no other applications are using the camera
-- Try different camera index in `cv2.VideoCapture(0)`
+- Check camera permissions in system settings
+- Ensure no other applications are using the camera (Zoom, Skype, etc.)
+- Try different camera index: `cv2.VideoCapture(1)` or `cv2.VideoCapture(2)`
+- On macOS: Grant camera access to Terminal/Python in System Preferences > Security & Privacy
+- On Linux: Install v4l-utils and check camera with `v4l2-ctl --list-devices`
 
-**Low accuracy**
-- Ensure proper lighting for gesture detection
-- Position hand clearly within the blue rectangle
-- Retrain model with more diverse training data
+**"Module not found" errors**
+- Make sure virtual environment is activated (you should see `(rps_env)` in prompt)
+- Try reinstalling the package: `pip install --upgrade <package_name>`
+- Check if you installed in the wrong Python environment
 
-**Slow performance**
-- Close other applications
-- Reduce model complexity if needed
-- Use GPU acceleration for TensorFlow
+**Low accuracy or poor gesture detection**
+- Ensure proper lighting - bright, even lighting works best
+- Position hand clearly within the blue rectangle ROI
+- Keep background simple and uncluttered
+- Retrain model with more diverse training data if needed
+- Adjust `CONFIDENCE_THRESHOLD` in the scripts (try lower values like 0.3)
+
+**Slow performance or lag**
+- Close other applications using CPU/GPU
+- Reduce model complexity if needed (edit model.py)
+- Enable GPU acceleration: Install TensorFlow GPU version if you have NVIDIA GPU
+- Lower camera resolution in scripts if needed
+
+**OpenCV camera errors**
+- Try different camera indices (0, 1, 2, etc.)
+- Check camera drivers are up to date
+- On Windows: Try running as Administrator
+- On Linux: `sudo apt install v4l-utils` and test with `cheese` or similar
+
+**TensorFlow installation issues**
+- For CPU-only: `pip install tensorflow-cpu` (smaller download)
+- For GPU support: Follow TensorFlow GPU setup guide for your system
+- If installation fails, try: `pip install --upgrade pip` first
+
+### Verification Steps
+
+After installation, verify everything works:
+
+```bash
+# Check Python and packages
+python --version
+python -c "import tensorflow as tf; print('TF:', tf.__version__)"
+python -c "import cv2; print('CV2:', cv2.__version__)"
+python -c "import numpy, matplotlib, sklearn; print('All imports OK')"
+
+# Check Git LFS
+git lfs version
+
+# Test camera access
+python -c "import cv2; cap = cv2.VideoCapture(0); print('Camera OK' if cap.isOpened() else 'Camera failed'); cap.release()"
+
+# Run a quick test
+python test_system.py
+```
+
+### Getting Help
+
+If you still have issues:
+1. Check the [GitHub Issues](https://github.com/Storm00212/rock-paper-scissors-model/issues) for similar problems
+2. Create a new issue with:
+   - Your operating system and Python version
+   - Exact error message
+   - Steps you followed
+   - Output of verification commands above
 
 ### System Requirements
 
