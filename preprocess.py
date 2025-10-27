@@ -111,11 +111,10 @@ def load_data():
     labels = np.array(labels, dtype=np.int32)
 
     # MACHINE LEARNING CONCEPT: One-Hot Encoding
-    # ==========================================
     # Convert categorical labels (0, 1, 2) to binary vectors ([1,0,0], [0,1,0], [0,0,1])
     # This is required for multi-class classification with softmax activation
     # Without one-hot encoding, the model would learn ordinal relationships between classes
-    # Now you know why you learned matrices in class boii. Enda soma matrices bana.
+    # Now you know why you learned matrices.Enda soma matrices we dwanzi.
     labels = to_categorical(labels, num_classes=len(CLASSES))
 
     print(f"Total images loaded: {len(data)}")
