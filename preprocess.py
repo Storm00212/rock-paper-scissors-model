@@ -115,7 +115,7 @@ def load_data():
     # Convert categorical labels (0, 1, 2) to binary vectors ([1,0,0], [0,1,0], [0,0,1])
     # This is required for multi-class classification with softmax activation
     # Without one-hot encoding, the model would learn ordinal relationships between classes
-    # Now you know why you learned matrices in class boii.
+    # Now you know why you learned matrices in class boii. Enda soma matrices bana.
     labels = to_categorical(labels, num_classes=len(CLASSES))
 
     print(f"Total images loaded: {len(data)}")
